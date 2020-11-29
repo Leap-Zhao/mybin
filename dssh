@@ -1,0 +1,29 @@
+#!/usr/bin/expect -f 
+
+# 此脚本用于登录其它机器
+# eg: dssh 127.0.0.1 
+
+set pass "zuozuihaodewo"
+set host [lindex $argv 0]
+
+spawn ssh feiyue@$host
+
+expect {
+	"yes/no" {
+		send "yes\n"
+		expect {
+			"Password:" {
+				send "$pass\n"
+			}
+		}
+	}
+	"Password:" {
+		send "$pass\n"
+	}
+}
+
+interact
+
+# 其它问题
+# port 22: Connection refused
+# mac上的解决方法: 选择系统偏好设置->选择共享->点击远程登录
