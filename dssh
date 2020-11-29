@@ -3,10 +3,11 @@
 # 此脚本用于登录其它机器
 # eg: dssh 127.0.0.1 
 
-set pass "zuozuihaodewo"
+set user "username"
+set pass "passpord"
 set host [lindex $argv 0]
 
-spawn ssh feiyue@$host
+spawn ssh $user@$host
 
 expect {
 	"yes/no" {
